@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
     // Get API Data
-    axios.get('http://localhost:3000/warframe-data')
+    axios.get('http://0.0.0.0:3000/warframe-data')
         .then(warframe_api_data => {
 
             res.render('root.ejs', {warframe_api_data: warframe_api_data.data});
