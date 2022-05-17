@@ -9,8 +9,37 @@
 
 <body>
 
-    <h1>Hello World</h1>
-    <span><%= warframe_api_data[0]['cetusCycle']['timeLeft'] %></span>
+    <div class="container m-2 bg-dark text-light w-25 rounded rounded-4">
+
+        <div class="row">
+
+            <div class="col p-2 fs-3">
+
+                Cetus:
+
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="col p-2">
+
+                <%= warframe_api_data[0]['cetusCycle']['isDay'] %>
+
+            </div>
+
+            <div class="col p-2">
+
+                <%= warframe_api_data[0]['cetusCycle']['timeLeft'] %>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <script src='js/bootstrap.js'></script>
 
 </body>
