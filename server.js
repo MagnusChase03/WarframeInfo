@@ -3,10 +3,10 @@ const app = express();
 
 // Routes
 const root = require('./routes/root');
-const cetus = require('./routes/cetus');
+const warframe_api_data = require('./routes/warframe-data');
 
 app.use('/', root);
-app.use('/cetus', cetus);
+app.use('/warframe-data', warframe_api_data);
 
 // Start Server
 const port = 3000;
