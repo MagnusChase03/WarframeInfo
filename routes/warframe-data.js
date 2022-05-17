@@ -5,7 +5,7 @@ const router = express.Router();
 // Routes
 router.get('/', (req, res) => {
 
-    // Get API DATA
+    // Get API Data
     axios.get('https://api.warframestat.us/pc')
         .then(warframe => {
 

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/MagnusChase03/WarframeInfo#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "ejs": "^3.1.8",
     "express": "^4.18.1"
   }
 }
