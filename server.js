@@ -39,7 +39,7 @@ function pull_api_data() {
 
         });
 
-    setTimeout(() => {
+    setInterval(() => {
 
         axios.get('http://0.0.0.0:3000/warframe-data')
             .then(warframe_api_data => {
