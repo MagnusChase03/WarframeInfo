@@ -93,7 +93,7 @@
 
                     <div class="col p-2">
 
-                        <%= alert['mission']['node'] %> (<%= alert['mission']['type'] %>) <%= alert['eta'] %>
+                        <%= alert['mission']['node'] %> (<%= alert['mission']['type'] %>) (<%= alert['eta'] %>)
 
                     </div>
 
@@ -104,6 +104,77 @@
                     <div class="col p-2">
 
                         <%= alert['mission']['reward']['asString'] %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }); %>
+
+    </div>
+
+    <div class="fs-1 m-2">Fissures:</div>
+    <hr>
+
+    <div class="d-flex flex-wrap">
+
+        <% warframe_api_data[0]['fissures'].forEach(function(fissure) { %>
+
+            <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                <div class="row">
+
+                    <div class="col p-2 fs-3">
+
+                        <%= fissure['node'] %> (<%= fissure['tier'] %>)
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col p-2">
+
+                        <%= fissure['missionType'] %> (<%= fissure['eta'] %>)
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }); %>
+
+    </div>
+
+    <div class="fs-1 m-2">Sortie:</div>
+    <hr>
+
+    <div class="d-flex">
+
+        <% warframe_api_data[0]['sortie']['variants'].forEach(function(mission) { %>
+
+            <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                <div class="row">
+
+                    <div class="col p-2 fs-3">
+
+                        <%= mission['node'] %>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col p-2">
+
+                        <%= mission['modifier'] %> (<%= mission['missionType'] %>) (<%=
+                                    warframe_api_data[0]['sortie']['eta'] %>)
 
                     </div>
 

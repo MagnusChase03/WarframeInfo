@@ -7,13 +7,13 @@ This is app is created to show important information regarding the world of Warf
 * [Framework](#framework)
 
 ## Usage
-One must first install the app by running the following command in the app directory:
+First build the application by running:
 
-`npm install`
+`docker-compose build`
 
-Once the app dependencies have been installed, one can run the app by executing:
+Then to run the application run:
 
-`npm run`
+`docker-compose up`
 
 ## Framework
 * ExpressJS / NodeJS
