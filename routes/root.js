@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const router = express.Router();
 
@@ -6,17 +8,20 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
     // Get API Data
-    axios.get('http://0.0.0.0:3000/warframe-data')
-        .then(warframe_api_data => {
+    fs.readFile(path.resolve(__dirname, '../database/warframe-api-data.json'), 'utf8', (err, data) => {
 
-            res.render('root.ejs', {warframe_api_data: warframe_api_data.data});
-
-        })
-        .catch(err => {
+        if (err) {
 
             console.log(err);
+            res.send(err);
 
-        });
+        } else {
+
+            res.render('root', {warframe_api_data: JSON.parse(data)});
+
+        }
+
+    });
 
 });
 
