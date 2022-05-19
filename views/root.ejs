@@ -10,179 +10,366 @@
 
 <body>
 
-    <div class="fs-1 m-2">News:</div>
-    <hr>
+    <div class="d-flex flex-nowrap">
 
-    <div class="d-flex justify-content-center flex-wrap">
+        <div class="d-flex flex-column bg-dark text-light p-3 w-25">
 
-        <% warframe_api_data[0]['news'].forEach(function(article) { %>
+            <span class="fs-3">WarframeInfo</span>
+            <hr>
 
-            <div class="container m-2 dataItem bg-danger text-light rounded rounded-4">
+            <ul class="nav nav-pills flex-column">
 
-                <div class="row">
+                <li class="nav-item">
 
-                    <div class="col p-2 fs-5">
+                    <a class="nav-link active" href="/">Home</a>
 
-                        <a href="<%= article['link'] %>"" class=" text-decoration-none text-light">
-                            <%= article['message'] %>
-                        </a>
+                </li>
 
+                <li>
+
+                    <a class="nav-link text-light" href="/">Market</a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="d-flex flex-column">
+
+            <div class="fs-1 m-2">News:</div>
+            <hr>
+
+            <div class="d-flex justify-content-center flex-wrap">
+
+                <% warframe_api_data[0]['news'].forEach(function(article) { %>
+
+                    <div class="container m-2 dataItem bg-danger text-light rounded rounded-4">
+
+                        <div class="row">
+
+                            <div class="col p-2 fs-5">
+
+                                <a href="<%= article['link'] %>"" class=" text-decoration-none text-light">
+                                    <%= article['message'] %>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+
+            </div>
+
+            <div class="fs-1 m-2">Nightwave:</div>
+            <hr>
+
+            <div class="d-flex flex-wrap">
+
+                <% warframe_api_data[0]['nightwave']['activeChallenges'].forEach(function(challenge) { %>
+
+                    <div class="container m-2 dataItem bg-danger text-light rounded rounded-4">
+
+                        <div class="row">
+
+                            <div class="col p-2 fs-3">
+
+                                <%= challenge['title'] %>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= challenge['desc'] %> (<%= challenge['reputation'] %>)
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+
+            </div>
+
+            <div class="fs-1 m-2">Game World:</div>
+            <hr>
+
+            <div class="d-flex flex-wrap">
+
+                <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                    <div class="row">
+
+                        <div class="col p-2 fs-3">
+
+                            Cetus:
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col p-2">
+
+                            State: <%= warframe_api_data[0]['cetusCycle']['state'] %>
+
+                        </div>
+
+                        <div class="col p-2">
+
+                            <%= warframe_api_data[0]['cetusCycle']['shortString'] %>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                    <div class="row">
+
+                        <div class="col p-2 fs-3">
+
+                            Vallis:
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col p-2">
+
+                            State: <%= warframe_api_data[0]['vallisCycle']['state'] %>
+
+                        </div>
+
+                        <div class="col p-2">
+
+                            <%= warframe_api_data[0]['vallisCycle']['shortString'] %>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+                
+                    <div class="row">
+                
+                        <div class="col p-2 fs-3">
+                
+                            Cambion:
+                
+                        </div>
+                
+                    </div>
+                
+                    <div class="row">
+                
+                        <div class="col p-2">
+                
+                            State: <%= warframe_api_data[0]['cambionCycle']['active'] %>
+                
+                        </div>
+                
+                        <div class="col p-2">
+                
+                            <%= warframe_api_data[0]['cambionCycle']['timeLeft'] %>
+                
+                        </div>
+                
                     </div>
 
                 </div>
 
             </div>
 
-            <% }); %>
+            <div class="fs-1 m-2">Alerts:</div>
+            <hr>
 
-    </div>
+            <div class="d-flex">
 
-    <div class="fs-1 m-2">Game World:</div>
-    <hr>
+                <% warframe_api_data[0]['alerts'].forEach(function(alert) { %>
 
-    <div class=" container m-2 dataItem bg-dark text-light rounded rounded-4">
+                    <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
 
-        <div class="row">
+                        <div class="row">
 
-            <div class="col p-2 fs-3">
+                            <div class="col p-2 fs-3">
 
-                Cetus:
+                                <%= alert['mission']['description'] %>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= alert['mission']['node'] %> (<%= alert['mission']['type'] %>) (<%= alert['eta'] %>)
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= alert['mission']['reward']['asString'] %>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+
+            </div>
+
+            <div class="fs-1 m-2">Fissures:</div>
+            <hr>
+
+            <div class="d-flex flex-wrap">
+
+                <% warframe_api_data[0]['fissures'].forEach(function(fissure) { %>
+
+                    <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                        <div class="row">
+
+                            <div class="col p-2 fs-3">
+
+                                <%= fissure['node'] %> (<%= fissure['tier'] %>)
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= fissure['missionType'] %> (<%= fissure['eta'] %>)
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+
+            </div>
+
+            <div class="fs-1 m-2">Invasions:</div>
+            <hr>
+
+            <div class="d-flex flex-wrap">
+
+                <% warframe_api_data[0]['invasions'].forEach(function(invasion) { %>
+
+                    <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                        <div class="row">
+
+                            <div class="col p-2 fs-3">
+
+                                <%= invasion['node'] %>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= invasion['desc'] %> (<%= invasion['eta'] %>)
+
+                            </div>
+
+                        </div>
+
+                        <div class="row align-items-center">
+
+                            <div class="col p-2">
+
+                                <%= invasion['attackerReward']['asString'] %>
+
+                            </div>
+
+                            <div class="col p-2">
+
+                                Or
+
+                            </div>
+
+                            <div class="col p-2">
+
+                                <%= invasion['defenderReward']['asString'] %>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
+
+            </div>
+
+            <div class="fs-1 m-2">Sortie:</div>
+            <hr>
+
+            <div class="d-flex">
+
+                <% warframe_api_data[0]['sortie']['variants'].forEach(function(mission) { %>
+
+                    <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
+
+                        <div class="row">
+
+                            <div class="col p-2 fs-3">
+
+                                <%= mission['node'] %>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col p-2">
+
+                                <%= mission['modifier'] %> (<%= mission['missionType'] %>) (<%=
+                                            warframe_api_data[0]['sortie']['eta'] %>)
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }); %>
 
             </div>
 
         </div>
-
-        <div class="row">
-
-            <div class="col p-2">
-
-                Day: <%= warframe_api_data[0]['cetusCycle']['isDay'] %>
-
-            </div>
-
-            <div class="col p-2">
-
-                <%= warframe_api_data[0]['cetusCycle']['shortString'] %>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="fs-1 m-2">Alerts:</div>
-    <hr>
-
-    <div class="d-flex">
-
-        <% warframe_api_data[0]['alerts'].forEach(function(alert) { %>
-
-            <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
-
-                <div class="row">
-
-                    <div class="col p-2 fs-3">
-
-                        <%= alert['mission']['description'] %>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col p-2">
-
-                        <%= alert['mission']['node'] %> (<%= alert['mission']['type'] %>) (<%= alert['eta'] %>)
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col p-2">
-
-                        <%= alert['mission']['reward']['asString'] %>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <% }); %>
-
-    </div>
-
-    <div class="fs-1 m-2">Fissures:</div>
-    <hr>
-
-    <div class="d-flex flex-wrap">
-
-        <% warframe_api_data[0]['fissures'].forEach(function(fissure) { %>
-
-            <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
-
-                <div class="row">
-
-                    <div class="col p-2 fs-3">
-
-                        <%= fissure['node'] %> (<%= fissure['tier'] %>)
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col p-2">
-
-                        <%= fissure['missionType'] %> (<%= fissure['eta'] %>)
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <% }); %>
-
-    </div>
-
-    <div class="fs-1 m-2">Sortie:</div>
-    <hr>
-
-    <div class="d-flex">
-
-        <% warframe_api_data[0]['sortie']['variants'].forEach(function(mission) { %>
-
-            <div class="container m-2 dataItem bg-dark text-light rounded rounded-4">
-
-                <div class="row">
-
-                    <div class="col p-2 fs-3">
-
-                        <%= mission['node'] %>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col p-2">
-
-                        <%= mission['modifier'] %> (<%= mission['missionType'] %>) (<%=
-                                    warframe_api_data[0]['sortie']['eta'] %>)
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <% }); %>
 
     </div>
 
