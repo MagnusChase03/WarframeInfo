@@ -3,17 +3,27 @@ const ejs = require('ejs');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+var body_parser = require('body-parser');
+var multer = require('multer');
+var form = multer();
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
+app.use(body_parser.json());
+app.use(body_parser.urlencoded({ extended: true })); 
+app.use(form.array()); 
 
 // Routes
 const root = require('./routes/root');
+const market = require('./routes/market');
+const search = require('./routes/search');
 const warframe_api_data = require('./routes/warframe-data');
 
 app.use('/', root);
+app.use('/market', market);
+app.use('/search', search)
 app.use('/warframe-data', warframe_api_data);
 
 // Writes API Data to File
