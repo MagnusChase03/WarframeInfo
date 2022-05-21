@@ -44,7 +44,12 @@
 
                 <form method="post" action="/search">
 
-                    <input class="p-2" type="text" name="search" size="50" />
+                    <input class="p-2" type="text" name="search" size="50" /><br>
+                    <input type="radio" name="market_type" value="sell" id="sell" />
+                    <label for="sell">Sellers</label>
+                    <input type="radio" name="market_type" value="buy" id="buy" />
+                    <label for="buy">Buyers</label>
+                    <br><br>
                     <input class="btn btn-success" type="submit" value="Search" />
 
                 </form>
@@ -56,47 +61,39 @@
 
             <div class="d-flex flex-column flex-wrap m-2">
 
-                <% searchResults.forEach(function(result) { %>
+                <% searchResults.forEach(function(order) { %>
 
-                    <% result['payload']['orders'].forEach(function(order) { %>
+                    <div class="d-flex flex-column p-2 m-2 bg-dark text-light rounded rounded-4">
 
-                        <% if (order['user']['status'] == 'ingame') { %>
-                        
-                        <div class="d-flex flex-column p-2 m-2 bg-dark text-light rounded rounded-4">
+                        <div class="d-flex">
 
-                            <div class="d-flex">
+                            <div class="fs-3 p-2 flex-grow-1">
 
-                                <div class="fs-3 p-2 flex-grow-1">
+                                <%= order['order_type'] %>
 
-                                    <%= order['order_type'] %>
+                            </div>
+
+                            <div class="d-flex flex-column p-2">
+
+                                <div class="d-flex flex-column">
+
+                                    <%= order['item_name'] %>:<br>
 
                                 </div>
 
-                                <div class="d-flex flex-column p-2">
+                                <div class="d-flex flex-column">
 
-                                    <div class="d-flex flex-column">
-
-                                        <%= result['item_name'] %>:<br>
-
-                                    </div>
-
-                                    <div class="d-flex flex-column">
-                                    
-                                        <%= order['user']['ingame_name'] %> (<%= order['platinum'] %>p)
-                                    
-                                    </div>
+                                    <%= order['user']['ingame_name'] %> (<%= order['platinum'] %>p)
 
                                 </div>
 
                             </div>
 
                         </div>
-                        
-                        <% } %>
 
-                        <% }) %>
+                    </div>
 
-                            <% }) %>
+                    <% }) %>
 
             </div>
 
